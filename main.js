@@ -17,3 +17,18 @@ for(let i = 0; i < item.length; i++ ){
     item[i].style.backgroundColor = '#f4f4f4';
 }
 item[2].style.backgroundColor = 'green';
+
+//new li element without the same class Name And try editing it with getelementsbyclassname and then by getelementbytagname
+const li = document.getElementsByClassName('list-group-item');
+// for(let i = 0; i < item.length; i++ ){
+//     item[i].style.fontWeight = 'bold';
+//     item[i].style.backgroundColor = '#f4f4f4';
+
+// }
+
+const li = document.getElementsByTagName('li');
+for(let i = 0; i < li.length; i++ ){
+    li[i].style.fontWeight = 'bold';
+    li[i].style.backgroundColor = 'yellow';
+    
+    }
