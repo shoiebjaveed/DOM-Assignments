@@ -32,3 +32,17 @@ for(let i = 0; i < li.length; i++ ){
     li[i].style.backgroundColor = 'yellow';
     
     }
+//Target elements by querySelector
+// var secondItem = document.querySelector('.list-group-item:nth-child(2)');
+// secondItem.style.backgroundColor = 'green';
+// var tItem = document.querySelector('.list-group-item:nth-child(3)'); 
+// tItem.textContent = "";
+
+//Target elements by querySelectorAll
+var even= document.querySelectorAll('li:nth-child(even)');
+even[0].style.color = "green";
+var odd = document.querySelectorAll('li:nth-child(odd)');
+for(var i = 0; i < odd.length; i++){
+       odd[i].style.backgroundColor = 'green';
+     }
+
