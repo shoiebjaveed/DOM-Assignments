@@ -1,128 +1,44 @@
-//console.log("Hello");
-//adding boder to Header
-var header = document.getElementById('main-header');
-header.style.borderBottom = 'solid 3px #000';
+//Adding funtionalities to item lister (adding new li, creating a deletebutton for li, and adding new button(edit) to new li 
+var form = document.getElementById('addForm');
+var itemList = document.getElementById('items');
+// Form submit event
+form.addEventListener('submit', addItem);
+//delete event
+itemList.addEventListener('click', removeItem);
+// Add item
+function addItem(e){
+    e.preventDefault();  
+    // Get input value
+    var newItem = document.getElementById('item').value;
+    // Create new li element
+    var li = document.createElement('li');
+    // Adding class
+    li.className = 'list-group-item';
+    //adding text node with input value
+    li.appendChild(document.createTextNode(newItem));
+    //adding delete button
+    var deleteBtn = document.createElement('button');
+    //adding edit button
+    var editBtn = document.createElement('button')
+    //adding classes to button
+    editBtn.className = 'btn btn-danger btn-sm float-right delete';
+    deleteBtn.className = 'btn btn-sm float-right';
+    // Appending text node to button
+    deleteBtn.appendChild(document.createTextNode('Edit')); 
+    editBtn.appendChild(document.createTextNode('x'));
+    // Appending button to li
+    li.appendChild(deleteBtn); 
+    li.appendChild(editBtn);
+    // Append li to list
+    itemList.appendChild(li);
+  }
 
-//changing Add Item to Bold and color as green
- var title = document.getElementById('addItem');
- title.style.fontWeight = 'bold';
- title.style.color = 'green';
-
-
-// chnaging 3 rd element in the list have green background color
-// changing all the elements in the list have bold and background color 
-const item = document.getElementsByClassName('list-group-item');
-for(let i = 0; i < item.length; i++ ){
-    item[i].style.fontWeight = 'bold';
-    item[i].style.backgroundColor = '#f4f4f4';
-}
-item[2].style.backgroundColor = 'green';
-
-//new li element without the same class Name And try editing it with getelementsbyclassname and then by getelementbytagname
-const li = document.getElementsByClassName('list-group-item');
-// for(let i = 0; i < item.length; i++ ){
-//     item[i].style.fontWeight = 'bold';
-//     item[i].style.backgroundColor = '#f4f4f4';
-
-// }
-
-const li = document.getElementsByTagName('li');
-for(let i = 0; i < li.length; i++ ){
-    li[i].style.fontWeight = 'bold';
-    li[i].style.backgroundColor = 'yellow';
-    
+  //remoing items
+  function removeItem(e){
+    if(e.target.classList.contains('delete')){
+      if(confirm('Are You Sure?')){
+        var li = e.target.parentElement;
+        itemList.removeChild(li);
+      }
     }
-//Target elements by querySelector
-// var secondItem = document.querySelector('.list-group-item:nth-child(2)');
-// secondItem.style.backgroundColor = 'green';
-// var tItem = document.querySelector('.list-group-item:nth-child(3)'); 
-// tItem.textContent = "";
-
-//Target elements by querySelectorAll
-var even= document.querySelectorAll('li:nth-child(even)');
-even[0].style.color = "green";
-var odd = document.querySelectorAll('li:nth-child(odd)');
-for(var i = 0; i < odd.length; i++){
-       odd[i].style.backgroundColor = 'green';
-     }
-
-//-------------------------------------------------------------------------------------------------
-//manipulating the DOM
-//var itemList = document.querySelector('#items');
-// parentNode
-// console.log(itemList.parentNode);
-// itemList.parentNode.style.backgroundColor = '#f4f4f4';
-// console.log(itemList.parentNode.parentNode.parentNode);
-
-// parentElement
-// console.log(itemList.parentElement);
-// itemList.parentElement.style.backgroundColor = '#f4f4f4';
-// console.log(itemList.parentElement.parentElement.parentElement);
-
-// childNodes
-// console.log(itemList.childNodes);
-
-// console.log(itemList.children);
-// console.log(itemList.children[1]);
-// itemList.children[1].style.backgroundColor = 'yellow';
-
-// // FirstChild
-// console.log(itemList.firstChild);
-// // firstElementChild
-// console.log(itemList.firstElementChild);
-// itemList.firstElementChild.textContent = 'Hello 1';
-
-
-// lastChild
-// console.log(itemList.lastChild);
-// lastElementChild
-// console.log(itemList.lastElementChild);
-// itemList.lastElementChild.textContent = 'Hello 4';
-
-// nextSibling
-// console.log(itemList.nextSibling);
-// // nextElementSibling
-// console.log(itemList.nextElementSibling);
-
-// previousSibling
-// console.log(itemList.previousSibling);
-// previousElementSibling
-// console.log(itemList.previousElementSibling);itemList.previousElementSibling.style.color = 'green';
-
-// createElement
-// adding HEllo word before Item Lister
-// Create a div
-var newDiv =  document.createElement('div');
-
-// Add class
-newDiv.className= 'hello';
-
-// Add id
-newDiv.id = 'hello1';
-
-// Add attr
-newDiv.setAttribute('title', 'Hello Div');
-
-// Create text node
-var newDivText = document.createTextNode('Hello');
-
-// Add text to div
- newDiv.appendChild(newDivText);
-
-var container = document.querySelector('header .container');
-var h1 = document.querySelector('header h1');
-
-// console.log(newDiv);
-
-newDiv.style.fontSize = '30px';
-
-container.insertBefore(newDiv, h1);
-
-
-// adding HEllo word before Item 1
-var itemList = document.querySelector('#items')
-itemList.previousElementSibling.textContent = 'Hello';
-
-
-
-
+  }
