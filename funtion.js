@@ -6,7 +6,9 @@ form.addEventListener('submit', addItem);
 // Delete event
 itemList.addEventListener('click', removeItem);
 // Filter event
+
 filter.addEventListener('keyup', filterItems);
+
 // Add item
 function addItem(e){
   e.preventDefault();
@@ -29,6 +31,7 @@ function addItem(e){
   // Append li to list
   itemList.appendChild(li);
 }
+
 // Remove item
 function removeItem(e){
   if(e.target.classList.contains('delete')){
